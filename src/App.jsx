@@ -24,6 +24,25 @@ export const App = () => {
         console.log("err", err);
       });
   };
+  
+  const [newMsg, setNewMsg] = useState("");
+
+  const handleFormSubmit = (event) => {
+    //event.preventDefault()
+  
+    fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({ "message": newMsg })
+    })
+      .then((res) => res.json())
+      .then((newThought) => {
+  
+        setThoughts((previousThoughts) => [newThought, ...previousThoughts])
+      })
+  }
 
 
   useEffect(() => {
@@ -34,8 +53,8 @@ export const App = () => {
   return (
     <>
     <div className="App">
-      <input type="text" />
-      <button onClick={getThoughts}>submit</button>
+      <input onChange={(e) => {setNewMsg(e.target.value)}} type="text" className="input"/>
+      <button onClick={handleFormSubmit}>submit</button>
     </div>
 
     <div className="msg">
