@@ -39,6 +39,7 @@ export const App = () => {
     })
       .then((res) => res.json())
       .then((newThought) => {
+        console.log ("new", newThought)
   
         setThoughts((previousThoughts) => [newThought, ...previousThoughts])
       })
@@ -51,18 +52,19 @@ export const App = () => {
 
 
   return (
-    <>
-    <div className="App">
+    <div className="app">
+    <div className="msgBox">
       <input onChange={(e) => {setNewMsg(e.target.value)}} type="text" className="input"/>
       <button onClick={handleFormSubmit}>submit</button>
     </div>
 
-    <div className="msg">
+    <div className="msgList">
       {thoughts.map((thought) => {
         return <Thought data={thought} key={thought._id}/>
       })}
     </div>
-  </>
+    
+  </div>
   );
    
 };

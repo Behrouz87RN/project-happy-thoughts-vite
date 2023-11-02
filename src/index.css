@@ -44,7 +44,8 @@ code {
 .strMsg:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.App {
+.msgBox {
+  display:flex;
   width: 15cm;
   margin: 0 auto;
   border: 1px solid #ccc;
@@ -54,27 +55,43 @@ code {
   margin-bottom: 10px;
 }
 
-
-.App button {
-  width: 30%;
+.msgBox button {
+  width: 20%;
   padding: 5px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.App button {
+.msgBox button {
   background-color: #fff;
   cursor: pointer;
 }
 
-.App button:hover {
+.msgBox button:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .input {
-  width: 100%;
+
+  width: 80%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+
+.likeButton {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.likeButton:focus {
+  outline: none;
+}
+
+.likeButton.active {
+  color: red;
 }

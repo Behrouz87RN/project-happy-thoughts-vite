@@ -1,0 +1,30 @@
+.strMsg {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+  }
+  
+  .strMsg p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .strMsg div {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .strMsg div div {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .strMsg div div:first-child {
+    margin-right: 10px;
+  }
+  
+  .strMsg:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
