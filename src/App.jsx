@@ -65,8 +65,9 @@ export const App = () => {
   return (
     <div className="app">
     <div className="msgBox">
+      <p>whats make you happy right now?</p>
       <input onChange={(e) => {setNewMsg(e.target.value)}} type="text" className="input"/>
-      <button onClick={handleFormSubmit}>submit</button>
+      <button onClick={handleFormSubmit}>❤️send Happy Thoughts❤️</button>
     </div>
 
     <div className="msgList">
