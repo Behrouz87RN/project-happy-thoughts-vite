@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import {Thought} from './thought.jsx'
+import { Thought } from "./components/thought";
 
 
 export const App = () => {
@@ -58,11 +58,9 @@ export const App = () => {
     });
   }
 
-
   useEffect(() => {
     getThoughts();
-  }, []); 
-
+  }, []);
 
   return (
     <div className="app">
