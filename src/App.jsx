@@ -4,10 +4,10 @@ import { Thought } from "./components/thought";
 
 
 export const App = () => {
-  //  Initialize state for storing the API data
+
   const [thoughts, setThoughts] = useState([]);
   const url = "https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts";
-  // Create a function to fetch 
+ 
   const getThoughts = async () => {
     fetch(url)
       .then((res) => {
@@ -26,6 +26,7 @@ export const App = () => {
   };
   
   const [newMsg, setNewMsg] = useState("");
+  const [charCount, setCharCount] = useState(0);
 
   const handleFormSubmit =  (event) => {
     //event.preventDefault()
@@ -61,24 +62,39 @@ export const App = () => {
   useEffect(() => {
     getThoughts();
   }, []);
+  useEffect(() => {
+    setCharCount(newMsg.length);
+
+    // Check if character count exceeds 140 and update color
+    if (newMsg.length > 140) {
+      document.getElementById("charCount").style.color = "red";
+    } else {
+      document.getElementById("charCount").style.color = "black";
+    }
+  }, [newMsg]);
+
 
   return (
     <div className="app">
-    <div className="msgBox">
-      <p className="questionText">whats make you happy right now?</p>
-      <input onChange={(e) => {setNewMsg(e.target.value)}} type="text" className="input"/>
-      <button onClick={handleFormSubmit}>❤️send Happy Thoughts❤️</button>
-    </div>
+      <div className="msgBox">
+        <p className="questionText">whats make you happy right now?</p>
+        <input
+          onChange={(e) => {
+            setNewMsg(e.target.value);
+          }}
+          type="text"
+          className="input"
+        />
+        <button onClick={handleFormSubmit}>❤️send Happy Thoughts❤️</button>
+        <p id="charCount" className= "charRemain" >Characters remaining: {140 - charCount}</p>
+      </div>
 
-    <div className="msgList">
-      {thoughts.map((thought) => {
-        return <Thought data={thought} key={thought._id}/>
-      })}
+      <div className="msgList">
+        {thoughts.map((thought) => {
+          return <Thought data={thought} key={thought._id} />;
+        })}
+      </div>
     </div>
-    
-  </div>
   );
-   
 };
-
 

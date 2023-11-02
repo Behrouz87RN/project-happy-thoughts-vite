@@ -22,7 +22,7 @@ export const Thought = ({ data }) => {
 
   return (
     <div className="strMsg">
-      <p>{data.message} </p>
+      <p >{data.message} </p>
       <div>
         <div>
           <div>{hearts}</div>
