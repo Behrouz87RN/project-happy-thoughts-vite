@@ -27,7 +27,7 @@ export const App = () => {
   
   const [newMsg, setNewMsg] = useState("");
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit =  (event) => {
     //event.preventDefault()
   
     fetch('https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts', {
@@ -37,12 +37,25 @@ export const App = () => {
       method: 'POST',
       body: JSON.stringify({ "message": newMsg })
     })
-      .then((res) => res.json())
-      .then((newThought) => {
-        console.log ("new", newThought)
-  
-        setThoughts((previousThoughts) => [newThought, ...previousThoughts])
-      })
+    .then( async (res) => {
+      if (res.status === 400) {
+        const data = await res.json();
+        alert( data.errors.message.message);
+        throw new Error(data.message); 
+      } else if (res.status === 201) {
+        return res.json(); 
+      } else {
+        throw new Error('Unknown Error'); 
+      }
+    })
+    .then((newThought) => {
+      console.log ("new", newThought)
+
+      setThoughts((previousThoughts) => [newThought, ...previousThoughts])
+    })
+    .catch((err) => {
+      console.log("err", err);
+    });
   }
 
 
