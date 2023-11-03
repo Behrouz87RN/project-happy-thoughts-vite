@@ -76,16 +76,20 @@ export const App = () => {
 
   return (
     <div className="app">
+      <div className="appTitle">
+        <h1>Project Happy Thoughts</h1>
+      </div>
       <div className="msgBox">
-        <p className="questionText">whats make you happy right now?</p>
+        <p className="questionText">What is making you happy right now?</p>
         <input
+          placeholder="Type here..."
           onChange={(e) => {
             setNewMsg(e.target.value);
           }}
           type="text"
           className="input"
         />
-        <button onClick={handleFormSubmit}>❤️send Happy Thoughts❤️</button>
+        <button onClick={handleFormSubmit}>Send Happy Thoughts❤️</button>
         <p id="charCount" className= "charRemain" >Characters remaining: {140 - charCount}</p>
       </div>
 

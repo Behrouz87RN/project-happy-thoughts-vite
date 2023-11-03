@@ -30,8 +30,8 @@ export const Thought = ({ data }) => {
       <p>{data.message}</p>
       <div>
         <div>
-          <div>{hearts}</div>
-          <LikeButton onLike={incrementLike} />
+          <div className="count-hearts">{hearts}</div>
+          <LikeButton className="count-hearts" onLike={incrementLike} />
         </div>
         <div>{timeAgo}</div>
       </div>
