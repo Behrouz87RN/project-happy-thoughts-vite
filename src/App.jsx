@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Thought } from "./components/thought";
-
+import { set } from "date-fns";
 
 export const App = () => {
 
@@ -73,6 +73,16 @@ export const App = () => {
     }
   }, [newMsg]);
 
+  //handle count of given likes
+  const [thoughtsLiked, setThoughtsLiked] = useState([]);
+
+  const handleThoughtLiked = (thoughtId) => {
+    //if it's not included
+    if (!thoughtsLiked.includes(thoughtId)){
+      //add to the list
+      setThoughtsLiked([thoughtId, ...thoughtsLiked]);
+    }
+  }
 
   return (
     <div className="app">
@@ -89,13 +99,18 @@ export const App = () => {
           type="text"
           className="input"
         />
-        <button onClick={handleFormSubmit}>Send Happy Thoughts❤️</button>
-        <p id="charCount" className= "charRemain" >Characters remaining: {140 - charCount}</p>
+        <div className="msgBox-container">
+          <button onClick={handleFormSubmit}>Send Happy Thoughts 💛</button>
+          <div className="msgBox-p-container">
+            <p className="likedCount">Thoughts ❤️: {thoughtsLiked.length}</p>
+            <p id="charCount" className= "charRemain" >Characters remaining: {140 - charCount}</p>
+          </div>
+        </div>
       </div>
 
       <div className="msgList">
         {thoughts.map((thought) => {
-          return <Thought data={thought} key={thought._id} />;
+          return <Thought data={thought} key={thought._id} onLike={handleThoughtLiked} />;
         })}
       </div>
     </div>
