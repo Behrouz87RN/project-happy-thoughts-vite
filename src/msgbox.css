@@ -4,7 +4,7 @@
     flex-direction: column;
     background-color: #f4f4f4;
     width: 400px;
-    height: 120px;
+    height: 128px;
     margin: 0 auto;
     border: 1px solid #cbcbcb;
     border-radius: 5px;
@@ -51,4 +51,23 @@
     text-align: right;
     font-size: 10px;
   
+  }
+
+  .msgBox-container{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .msgBox-p-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 2px;
+  }
+
+  .likedCount{
+    font-size: 12px;
+    margin: 8px 0 0 0;
+    font-weight: 600;
   }

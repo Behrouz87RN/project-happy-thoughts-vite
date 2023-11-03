@@ -2,7 +2,7 @@ import { useState } from "react";
 import { LikeButton } from "./LikesButton";
 import { differenceInSeconds, formatDistanceToNow } from 'date-fns';
 
-export const Thought = ({ data }) => {
+export const Thought = ({ data, onLike }) => {
   const [hearts, setHearts] = useState(data.hearts);
   const likeUrl = `https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${data._id}/like`;
 
@@ -11,6 +11,7 @@ export const Thought = ({ data }) => {
     const responseJson = await response.json();
 
     setHearts(responseJson.hearts);
+    onLike(data._id);
   };
 
   const createdAt = new Date(data.createdAt);
