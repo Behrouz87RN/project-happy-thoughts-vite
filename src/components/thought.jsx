@@ -22,11 +22,11 @@ export const Thought = ({ data }) => {
 
   return (
     <div className="strMsg">
-      <p >{data.message} </p>
+      <p>{data.message} </p>
       <div>
         <div>
-          <div>{hearts}</div>
-          <LikeButton onLike={incrementLike} />
+          <div className="count-hearts">{hearts}</div>
+          <LikeButton className="count-hearts" onLike={incrementLike} />
         </div>
         <div>{`${secondsAgo} seconds ago`}</div>
       </div>
