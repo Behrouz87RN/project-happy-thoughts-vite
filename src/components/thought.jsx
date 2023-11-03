@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { LikeButton } from "./LikesButton";
-import { differenceInSeconds } from 'date-fns';
-
+import { differenceInSeconds, formatDistanceToNow } from 'date-fns';
 
 export const Thought = ({ data }) => {
   const [hearts, setHearts] = useState(data.hearts);
@@ -16,19 +15,25 @@ export const Thought = ({ data }) => {
 
   const createdAt = new Date(data.createdAt);
   const now = new Date();
-  //const diff = date.subtract(now, createdAt);
-  //const secondsAgo = date.format(diff, 's');
-  const secondsAgo = differenceInSeconds(now, createdAt);
+  let secondsAgo = differenceInSeconds(now, createdAt);
+
+  // Ensure the time difference is non-negative
+  secondsAgo = Math.max(secondsAgo, 0);
+
+  // Convert to human-readable format if more than 160 seconds ago
+  const timeAgo = secondsAgo >= 60
+    ? formatDistanceToNow(createdAt, { addSuffix: true })
+    : `${secondsAgo} second${secondsAgo !== 1 ? 's' : ''} ago`;
 
   return (
     <div className="strMsg">
-      <p >{data.message} </p>
+      <p>{data.message}</p>
       <div>
         <div>
           <div>{hearts}</div>
           <LikeButton onLike={incrementLike} />
         </div>
-        <div>{`${secondsAgo} seconds ago`}</div>
+        <div>{timeAgo}</div>
       </div>
     </div>
   );
