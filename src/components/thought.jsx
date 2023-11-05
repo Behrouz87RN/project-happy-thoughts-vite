@@ -1,17 +1,29 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LikeButton } from "./LikesButton";
-import { differenceInSeconds, formatDistanceToNow } from 'date-fns';
+import { differenceInSeconds, formatDistanceToNow } from "date-fns";
 
-export const Thought = ({ data, onLike }) => {
+export const Thought = ({ data }) => {
   const [hearts, setHearts] = useState(data.hearts);
+  const [loading, setLoading] = useState(true);
+  const [isHeartClicked, setHeartClicked] = useState (false);
+
+
   const likeUrl = `https://happy-thoughts-ux7hkzgmwa-uc.a.run.app/thoughts/${data._id}/like`;
 
   const incrementLike = async () => {
-    const response = await fetch(likeUrl, { method: "POST" });
-    const responseJson = await response.json();
+    setLoading(true); // Set loading to true when making the API request
+    const response = await fetch(likeUrl, { method: "POST" })
+    .then(async (res) => res.json())
+    .then((res) => {
+      setHearts(res.hearts);
+      setHeartClicked(true);
+    })
+    .catch((err) => {
+      console.log("err", err);
+      setHeartClicked(false);
+    });
 
-    setHearts(responseJson.hearts);
-    onLike(data._id);
+    setLoading(false); // Set loading to false after the API request is complete
   };
 
   const createdAt = new Date(data.createdAt);
@@ -22,20 +34,31 @@ export const Thought = ({ data, onLike }) => {
   secondsAgo = Math.max(secondsAgo, 0);
 
   // Convert to human-readable format if more than 160 seconds ago
-  const timeAgo = secondsAgo >= 60
-    ? formatDistanceToNow(createdAt, { addSuffix: true })
-    : `${secondsAgo} second${secondsAgo !== 1 ? 's' : ''} ago`;
+  const timeAgo =
+    secondsAgo >= 60
+      ? formatDistanceToNow(createdAt, { addSuffix: true })
+      : `${secondsAgo} second${secondsAgo !== 1 ? "s" : ""} ago`;
+
+  useEffect(() => {
+    setLoading(false); // Simulate data loading completion
+  }, []); // Add any dependencies if needed
 
   return (
     <div className="strMsg">
-      <p>{data.message}</p>
-      <div>
+      <>
+        <p>{data.message}</p>
         <div>
-          <div className="count-hearts">{hearts}</div>
-          <LikeButton className="count-hearts" onLike={incrementLike} />
+          <div>
+            <div className="count-hearts">{hearts}</div>
+            {loading ? (
+              <div className="placeholder">Loading...</div>
+            ) : (
+              <LikeButton className="count-hearts" onLike={incrementLike} isLiked={isHeartClicked} />
+            )}
+          </div>
+          <div>{timeAgo}</div>
         </div>
-        <div>{timeAgo}</div>
-      </div>
+      </>
     </div>
   );
 };

@@ -1,12 +1,8 @@
 import { useState } from "react";
 
-export const LikeButton = ({onLike}) => {
-
-
-  const [isHeartClicked, setHeartClicked] = useState (false);
+export const LikeButton = ({onLike, isLiked}) => {
 
   const clickHeart = () => {
-    setHeartClicked(true)
     onLike()
   }
 
@@ -14,8 +10,8 @@ export const LikeButton = ({onLike}) => {
   // choose which heart to display if clicked or not
   
     return (
-      <button className="likeButton" onClick={clickHeart} >
-        {isHeartClicked ? (
+      <button className="likeButton" onClick={!isLiked && clickHeart} >
+        {isLiked ? (
           <span className="heart-icon">❤️</span>
         ) : (
           <span className="heart-icon">🤍</span>

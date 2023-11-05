@@ -37,3 +37,12 @@
   .strMsg:hover {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
+
+
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust height as needed */
+  background-color: #f0f0f0;
+}
