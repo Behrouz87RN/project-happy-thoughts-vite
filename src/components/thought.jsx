@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LikeButton } from "./LikesButton";
 import { differenceInSeconds, formatDistanceToNow } from "date-fns";
 
-export const Thought = ({ data }) => {
+export const Thought = ({ data, onLike }) => {
   const [hearts, setHearts] = useState(data.hearts);
   const [loading, setLoading] = useState(true);
   const [isHeartClicked, setHeartClicked] = useState (false);
@@ -17,6 +17,7 @@ export const Thought = ({ data }) => {
     .then((res) => {
       setHearts(res.hearts);
       setHeartClicked(true);
+      onLike(data._id);
     })
     .catch((err) => {
       console.log("err", err);
@@ -46,7 +47,7 @@ export const Thought = ({ data }) => {
   return (
     <div className="strMsg">
       <>
-        <p>{data.message}</p>
+        <p>💌 {data.message}</p>
         <div>
           <div>
             <div className="count-hearts">{hearts}</div>

@@ -3,7 +3,7 @@
     width: 400px;
     height: 120px;
     margin: 0 auto;
-    border: 1px solid #ccc;
+    border: 2px solid #ffffff;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 7px 6px 0px rgb(119, 163, 235);
@@ -43,16 +43,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; /* Adjust height as needed */
-  background-color: #f0f0f0;
+  height: 20px; /* Adjust height as needed */
+  background-color: #fafafa;
 }
 
 @media screen and (max-width: 576px) {
 
   .strMsg {
     width: 320px;
-    height: 102px;
     margin-bottom: 20px;
     padding: 10px;
+  }
+
+  .strMsg p {
+    font-size: 14px;
   }
 }

@@ -8,6 +8,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body{
+  background-color:#d6d6d6;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -23,7 +27,7 @@ code {
   text-align: center;
   font-size: 44px;
   font-weight: 700;
-  background: -webkit-linear-gradient(#0575dd, #b31753);
+  background: -webkit-linear-gradient( #69bbeb ,#5889c6, #b785ba);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

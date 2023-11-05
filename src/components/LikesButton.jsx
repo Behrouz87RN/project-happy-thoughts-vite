@@ -1,16 +1,8 @@
-import { useState } from "react";
-
 export const LikeButton = ({onLike, isLiked}) => {
-
-  const clickHeart = () => {
-    onLike()
-  }
-
-
   // choose which heart to display if clicked or not
   
     return (
-      <button className="likeButton" onClick={!isLiked && clickHeart} >
+      <button className="likeButton" onClick={() => {!isLiked && onLike()}} >
         {isLiked ? (
           <span className="heart-icon">❤️</span>
         ) : (
