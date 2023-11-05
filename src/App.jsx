@@ -107,7 +107,7 @@ export const App = () => {
             {sending ? 'Sending...' : 'Send Happy Thoughts 💛'}
           </button>
           <div className="msgBox-p-container">
-            <p className="likedCount">Thoughts ❤️: {thoughtsLiked.length}</p>
+            <p className="likedCount">Thoughts ❤️ {thoughtsLiked.length}</p>
             <p id="charCount" className="charRemain">
               Characters remaining: {140 - charCount}
             </p>
