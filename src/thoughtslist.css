@@ -46,3 +46,13 @@
   height: 100px; /* Adjust height as needed */
   background-color: #f0f0f0;
 }
+
+@media screen and (max-width: 576px) {
+
+  .strMsg {
+    width: 320px;
+    height: 102px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}
