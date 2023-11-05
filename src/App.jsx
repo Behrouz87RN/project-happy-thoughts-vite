@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Thought } from "./components/thought";
-import { LikeButton } from "./components/LikesButton";
-import { differenceInSeconds, formatDistanceToNow } from 'date-fns';
+import { AnimatePresence, motion } from "framer-motion";
 
 export const App = () => {
   const [thoughts, setThoughts] = useState([]);
@@ -116,15 +115,23 @@ export const App = () => {
         </div>
       </div>
 
-      <div className="msgList">
-        {loading ? (
-          <div className="loading">Loading...</div>
-        ) : (
-          thoughts.map((thought) => (
-            <Thought data={thought} key={thought._id} onLike={handleThoughtLiked} />
-          ))
-        )}
-      </div>
+      <motion.div layout layoutId={"msgList"} className="msgList">
+        <AnimatePresence>
+          {loading ? (
+            <div className="loading">Loading...</div>
+          ) : (
+            thoughts.map((thought) => (
+              <motion.div
+                initial={{ x: -200, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                key={thought._id}
+              >
+                <Thought data={thought} onLike={handleThoughtLiked} />
+              </motion.div>
+            ))
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 };
