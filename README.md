@@ -1,35 +1,26 @@
-<h1 align="center">
-  <a href="">
-    <img src="/src/assets/happy-thoughts.svg" alt="Project Banner Image">
-  </a>
-</h1>
 
-# Unhappy thoughts Project
+# Happy thoughts Project
 
-In this week's project, you'll be able to practice your React state skills by fetching and posting data to an API.
+In this week's project, we were able to using React state skills fetch and post data to an API. The user can 
+add new thoughts and see the current posted thoughts from other users.
+
+list the most recent thoughts at the top and older thoughts at the bottom (sorted)
+Thoughts show the content of the message and how many likes they've received
+Have a form to post new thoughts
+Implemented the heart button to send likes on a thought
+Adapting to the different viewports
+Show a count below the form input that updates as the user types and shows how many characters are remaining. Make it go red when the user has typed over 140 characters
+When POSTing a new thought, if the message was empty, too long, or too short, you get an error message back from the API. 
+Keep count of how many different posts user has liked (different from how many times a post has been liked).
+Add an animation for when a new thought is submitted and appears in the list below
+Handle loading states. 
 
 ## Getting Started with the Project
 
-### Dependency Installation & Startup Development Server
-
-Once cloned, navigate to the project's root directory and this project uses npm (Node Package Manager) to manage its dependencies.
-
-The command below is a combination of installing dependencies, opening up the project on VS Code and it will run a development server on your terminal.
-
-```bash
-npm i && code . && npm run dev
-```
-
 ### The Problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Project done in pair programming, by Vanessa Arruda and Behrouz.
 
 ### View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-## Instructions
-
-<a href="instructions.md">
-   See instructions of this project
-  </a>
+Deployed -> https://deploy-preview-5--stirring-pudding-ff101e.netlify.app/
