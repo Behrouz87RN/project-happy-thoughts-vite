@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LikeButton } from "./LikesButton";
+import { LikesButton } from "./LikesButton";
 import { differenceInSeconds, formatDistanceToNow } from "date-fns";
 
 export const Thought = ({ data, onLike }) => {
@@ -54,7 +54,7 @@ export const Thought = ({ data, onLike }) => {
             {loading ? (
               <div className="placeholder">Loading...</div>
             ) : (
-              <LikeButton className="count-hearts" onLike={incrementLike} isLiked={isHeartClicked} />
+              <LikesButton className="count-hearts" onLike={incrementLike} isLiked={isHeartClicked} />
             )}
           </div>
           <div>{timeAgo}</div>

@@ -1,4 +1,4 @@
-export const LikeButton = ({onLike, isLiked}) => {
+export const LikesButton = ({onLike, isLiked}) => {
   // choose which heart to display if clicked or not
   
     return (
