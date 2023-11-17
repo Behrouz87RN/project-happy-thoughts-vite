@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Thought } from "./components/thought";
+import { Thought } from "./components/Thought";
 import { AnimatePresence, motion } from "framer-motion";
 
 export const App = () => {
