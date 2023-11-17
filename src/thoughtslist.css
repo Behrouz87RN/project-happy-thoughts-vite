@@ -1,7 +1,10 @@
 
+
 .strMsg {
-    width: 400px;
-    height: 120px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 150px;
     margin: 0 auto;
     border: 2px solid #ffffff;
     border-radius: 5px;
@@ -9,13 +12,13 @@
     box-shadow: 7px 6px 0px rgb(119, 163, 235);
     margin-bottom: 30px;
     background-color: rgb(234, 250, 255);
+    flex-wrap: wrap;
   }
   
-  .strMsg p {
-    font-size: 16px;
-    margin-bottom: 15px;
+  .strMsg p{
+    font-size: 14px;
     font-weight: 600;
-
+    word-break: break-word;
   }
   
   .strMsg div {
